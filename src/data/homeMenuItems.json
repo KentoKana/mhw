@@ -1,0 +1,21 @@
+[{
+        "label": "Armors",
+        "sourceURL": "armor",
+        "icon": "/assets/images/menu-icons/mhw-armors.png"
+    },
+    {
+        "label": "Weapons",
+        "sourceURL": "weapons",
+        "icon": "/assets/images/menu-icons/mhw-weapons.png"
+    },
+    {
+        "label": "Decorations",
+        "sourceURL": "decorations",
+        "icon": "/assets/images/menu-icons/mhw-decorations.webp"
+    },
+    {
+        "label": "Monsters",
+        "sourceURL": "monsters",
+        "icon": "/assets/images/menu-icons/mhw-monsters.webp"
+    }
+]
