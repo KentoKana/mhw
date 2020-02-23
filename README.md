@@ -1,2 +1,2 @@
-Reac Redux Boilerplate
+MHW REACT-REDUX APP
 ---
