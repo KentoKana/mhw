@@ -1,5 +1,6 @@
 export const fetchMonsters = () => dispatch => {
-  fetch(`https://mhw-db.com/monsters`)
+  const url = new URL(`https://mhw-db.com/monsters?`);
+  fetch(url)
     .then(response => response.json())
     .then(monsters => {
       dispatch({
@@ -38,6 +39,21 @@ export const fetchDecorations = () => dispatch => {
       dispatch({
         type: "FETCH_DECORATIONS",
         payload: decorations
+      });
+    });
+};
+
+export const fetchSingleItem = (listType, id) => dispatch => {
+  dispatch({
+    type: "FETCH_SINGLE_ITEM",
+    payload: false
+  });
+  fetch(`https://mhw-db.com/${listType}/${id}`)
+    .then(response => response.json())
+    .then(item => {
+      dispatch({
+        type: "FETCH_SINGLE_ITEM",
+        payload: item
       });
     });
 };

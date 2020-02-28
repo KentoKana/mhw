@@ -17,9 +17,9 @@ const ListSection = ({ itemsArray, listType }) => {
                     <Link
                       to={`${listType}/${item.name
                         .toLowerCase()
-                        .replace("'", "-")
+                        .replace("'", "")
                         .split(" ")
-                        .join("-")}`}
+                        .join("-")}/${item.id}`}
                     >
                       {item.name}
                     </Link>

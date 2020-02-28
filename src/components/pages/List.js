@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ListSection from "../partials/ListSection";
+import ReactLoading from "react-loading";
+
 import {
   fetchMonsters,
   fetchArmors,
@@ -47,7 +49,15 @@ const List = ({ match }) => {
         {list ? (
           <ListSection listType={listType} itemsArray={list.items} />
         ) : (
-          <>Loading...</>
+          <>
+            <div>Loading...</div>
+            <ReactLoading
+              type={"bubbles"}
+              color={"grey"}
+              height={50}
+              width={50}
+            />
+          </>
         )}
       </>
     );
