@@ -43,7 +43,9 @@ const RenderElementsRecursively = (item, depth) => {
                       }
                     } else {
                       return (
-                        <td>{RenderElementsRecursively(prop[k], depth + 1)}</td>
+                        <td key={index}>
+                          {RenderElementsRecursively(prop[k], depth + 1)}
+                        </td>
                       );
                     }
                   } else {
@@ -73,31 +75,42 @@ const RenderElementsRecursively = (item, depth) => {
           if (item[key] !== null) {
             if (key !== "id" && key !== "rewards") {
               return (
-                <tr
-                  key={index}
-                  style={{ marginRight: "20px" }}
-                  className={`sublist ${key}`}
-                >
-                  <th>
-                    <strong className={key}>{label}</strong>:{" "}
-                  </th>
-                  <td>
-                    {item[key].length !== 0 ? (
-                      RenderElementsRecursively(item[key], depth + 1)
-                    ) : (
-                      <>N/A</>
-                    )}
-                  </td>
-                </tr>
+                <tbody key={index}>
+                  <tr
+                    key={index}
+                    style={{ marginRight: "20px" }}
+                    className={`sublist ${key}`}
+                  >
+                    <th className={key}>{label}</th>
+                    <td>
+                      {item[key].length !== 0 ? (
+                        RenderElementsRecursively(item[key], depth + 1)
+                      ) : (
+                        <>N/A</>
+                      )}
+                    </td>
+                  </tr>
+                </tbody>
               );
             } else {
               return <React.Fragment key={index}></React.Fragment>;
             }
           } else {
             return (
-              <li key={index}>
-                <strong>{label}</strong>: N/A
-              </li>
+              <React.Fragment key={index}>
+                <thead>
+                  <tr>
+                    <th>
+                      <strong className={key}>{label}</strong>:{" "}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>N/A</td>
+                  </tr>
+                </tbody>
+              </React.Fragment>
             );
           }
         })}
