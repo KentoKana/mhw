@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSingleItem } from "../../actions";
 import ReactLoading from "react-loading";
+import RenderElementsRecursively from "../partials/RenderElementsRecursively";
 
 const SingleItem = ({ match }) => {
   const listType = match.params.listType;
@@ -16,39 +17,10 @@ const SingleItem = ({ match }) => {
 
   const item = requestedItem.object;
 
-  const RenderElementsRecursively = item => {
-    if (item.constructor === Array) {
-      return item.map(prop => {
-        return RenderElementsRecursively(prop);
-      });
-    } else if (item.constructor === Object) {
-      const objectKeys = Object.keys(item);
-      return (
-        <ul>
-          {objectKeys.map((key, index) => {
-            if (item[key] !== null) {
-              const text = key;
-              const label = text.replace(/([A-Z])/g, " $1");
-              const finalLabel = label.charAt(0).toUpperCase() + label.slice(1);
-              console.log(key, item);
-
-              return (
-                <li key={index}>
-                  <strong>{finalLabel}</strong>:{" "}
-                  {RenderElementsRecursively(item[key])}
-                </li>
-              );
-            }
-          })}
-        </ul>
-      );
-    } else {
-      return item;
-    }
-  };
-
   return item ? (
-    RenderElementsRecursively(item)
+    <section className="container">
+      {RenderElementsRecursively(item, 0)}
+    </section>
   ) : (
     <>
       <div>Loading...</div>

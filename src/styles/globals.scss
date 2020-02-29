@@ -5,3 +5,20 @@
     max-width: 1200px;
     margin: 0 auto;
 }
+
+table {
+    border-collapse: collapse;
+}
+
+th {
+    padding: 10px;
+    text-align: left;
+    vertical-align: top;
+}
+
+td {
+    text-align: left;
+    min-width: 100px;
+    padding: 10px;
+    vertical-align: top;
+}
