@@ -15,7 +15,7 @@ const ListSection = ({ itemsArray, listType }) => {
                 <tr key={index}>
                   <td>
                     <Link
-                      to={`${listType}/${item.name
+                      to={`/list/${listType}/${item.name
                         .toLowerCase()
                         .replace("'", "")
                         .split(" ")

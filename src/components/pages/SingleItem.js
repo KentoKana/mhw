@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSingleItem } from "../../actions";
 import ReactLoading from "react-loading";
-import RenderElementsRecursively from "../partials/RenderElementsRecursively";
+import Monster from "../partials/Monster/Monster";
 
 const SingleItem = ({ match }) => {
   const listType = match.params.listType;
@@ -16,10 +16,20 @@ const SingleItem = ({ match }) => {
   }, [listType, itemID, dispatch]);
 
   const item = requestedItem.object;
+  const RenderItem = ({ item }) => {
+    switch (listType) {
+      case "monsters":
+        return <Monster monster={item} />;
+      case "armor":
+        return <>{item.name}</>;
+      default:
+        return <>Hi</>;
+    }
+  };
 
   return item ? (
     <section className="container">
-      {RenderElementsRecursively(item, 0)}
+      <RenderItem item={item} />
     </section>
   ) : (
     <>
