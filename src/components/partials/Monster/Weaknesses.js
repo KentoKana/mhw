@@ -1,11 +1,14 @@
 import React from "react";
 
 const Weaknesses = ({ weaknesses }) => {
-  const Stars = ({ numberOfStars }) => {
-    return [...Array(numberOfStars)].map((e, index) => (
-      <i className="fas fa-star" key={index}></i>
-    ));
+  const generateStars = numberOfStars => {
+    let array = [];
+    for (let i = 0; i < numberOfStars; i++) {
+      array.push(<i className="fas fa-star" key={i}></i>);
+    }
+    return array;
   };
+
   if (weaknesses) {
     return (
       <table>
@@ -15,7 +18,9 @@ const Weaknesses = ({ weaknesses }) => {
               <tr key={index}>
                 <td>{weakness.element}</td>
                 <td>
-                  <Stars numberOfStars={weakness.stars} />
+                  {generateStars(weakness.stars).map(star => {
+                    return star;
+                  })}
                 </td>
               </tr>
             );

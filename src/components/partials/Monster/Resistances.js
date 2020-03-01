@@ -25,6 +25,6 @@ const Resistances = ({ resistances }) => {
     return <></>;
   }
 };
-export const ResistancesHeading = "Resistanes";
+export const ResistancesHeading = "Resistances";
 
 export default Resistances;
