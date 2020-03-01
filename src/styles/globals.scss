@@ -8,6 +8,17 @@
 
 table {
     border-collapse: collapse;
+
+    table {
+        th {
+            background-color: #000;
+            color: #FFF;
+        }
+        tr:nth-child(2n) {
+            background-color: #777; 
+        }
+        background-color: #AAA;
+    }
 }
 
 th {

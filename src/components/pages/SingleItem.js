@@ -19,7 +19,7 @@ const SingleItem = ({ match }) => {
 
   return item ? (
     <section className="container">
-      {RenderElementsRecursively(item, 0)}
+      {RenderElementsRecursively(item)}
     </section>
   ) : (
     <>
