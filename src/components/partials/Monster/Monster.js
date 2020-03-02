@@ -3,10 +3,11 @@ import Locations, { LocationsHeading } from "./Locations";
 import Elements, { ElementsHeading } from "./Elements";
 import Resistances, { ResistancesHeading } from "./Resistances";
 import Weaknesses, { WeaknessesHeading } from "./Weaknesses";
+import Ailments, { AilmentsHeading } from "./Ailments";
 import TableList from "../tables/TableList";
 
 const Monster = ({ monster }) => {
-  console.log(monster);
+  // console.log(monster);
   if (monster) {
     return (
       <div>
@@ -29,8 +30,11 @@ const Monster = ({ monster }) => {
             ]}
           />
           <TableList
-            headings={[WeaknessesHeading]}
-            children={[<Weaknesses weaknesses={monster.weaknesses} />]}
+            headings={[WeaknessesHeading, AilmentsHeading]}
+            children={[
+              <Weaknesses weaknesses={monster.weaknesses} />,
+              <Ailments ailments={monster.ailments} />
+            ]}
           />
         </div>
       </div>

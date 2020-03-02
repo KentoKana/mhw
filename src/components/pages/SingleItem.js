@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchSingleItem } from "../../actions";
 import ReactLoading from "react-loading";
 import Monster from "../partials/Monster/Monster";
+import Armor from "../partials/Armor/Armor";
 
 const SingleItem = ({ match }) => {
   const listType = match.params.listType;
@@ -21,7 +23,7 @@ const SingleItem = ({ match }) => {
       case "monsters":
         return <Monster monster={item} />;
       case "armor":
-        return <>{item.name}</>;
+        return <Armor armor={item} />;
       default:
         return <>Hi</>;
     }
@@ -29,6 +31,7 @@ const SingleItem = ({ match }) => {
 
   return item ? (
     <section className="container">
+      <Link to={`/list/${listType}`}>Back To List</Link>
       <RenderItem item={item} />
     </section>
   ) : (
